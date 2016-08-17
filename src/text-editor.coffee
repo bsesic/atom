@@ -144,7 +144,6 @@ class TextEditor extends Model
     @selections = []
     @hasTerminatedPendingState = false
 
-    @autoHeight ?= true
     @mini ?= false
     @scrollPastEnd ?= true
     @showInvisibles ?= true
@@ -318,7 +317,7 @@ class TextEditor extends Model
         when 'autoHeight'
           if value isnt @autoHeight
             @autoHeight = value
-            @editorElement?.didChangeAutoHeight()
+            @presenter?.setAutoHeight(@autoHeight)
 
         else
           throw new TypeError("Invalid TextEditor parameter: '#{param}'")
